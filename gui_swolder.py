@@ -19,7 +19,7 @@ FONT_SIZE = 10  # cambia qui per ingrandire/ridurre
 GBALL_H = 160
 GB1_W, GB1_H = 200, GBALL_H   # Livello 1
 GB2_W, GB2_H = 200, GBALL_H   # Livello 2
-GB3_W, GB3_H = 200, GBALL_H   # Livello 3
+GB3_W, GB3_H = 190, GBALL_H   # Livello 3
 GB5_W, GB5_H = 280, GBALL_H   # Livello 5
 LIST_W, LIST_H = 350, GBALL_H # Colonna "Commesse esistenti"
 
@@ -301,12 +301,12 @@ class SwolderApp(tk.Tk):
         self.cb_tipo_pompa.grid(row=3, column=0, sticky="we", **pad)
 
     def _gb2_contents(self, parent: ttk.LabelFrame):
-        pad = dict(padx=8, pady=2)
+        pad = dict(padx=3, pady=2)
         ttk.Label(parent, text="PUMP MODEL").grid(row=0, column=0, columnspan=3, sticky="w", **pad)
 
         ttk.Entry(parent, width=4, textvariable=self.modello_pompa_num, style="Box.TEntry").grid(row=1, column=0, **pad)
         ttk.Entry(parent, width=6, textvariable=self.modello_pompa_letters, style="Box.TEntry").grid(row=1, column=1, **pad)
-        ttk.Entry(parent, width=6, textvariable=self.modello_pompa_suffix, style="Box.TEntry").grid(row=1, column=2, **pad)
+        ttk.Entry(parent, width=4, textvariable=self.modello_pompa_suffix, style="Box.TEntry").grid(row=1, column=2, **pad)
 
         ttk.Label(parent, text="EXISTING PUMP").grid(row=2, column=0, columnspan=3, sticky="w", **pad)
         self.cb_modello_esistente = ttk.Combobox(
@@ -318,10 +318,10 @@ class SwolderApp(tk.Tk):
         self.cb_modello_esistente.grid(row=3, column=0, columnspan=3, sticky="we", **pad)
 
     def _gb3_contents(self, parent: ttk.LabelFrame):
-        pad = dict(padx=8, pady=2)
+        pad = dict(padx=1, pady=2)
         ttk.Label(parent, text="HYDRAULIC").grid(row=0, column=0, columnspan=2, sticky="w", **pad)
         ttk.Label(parent, text="idr").grid(row=1, column=0, sticky="e", **pad)
-        ttk.Entry(parent, width=10, textvariable=self.idraulica_letters, style="Box.TEntry").grid(row=1, column=1, sticky="w", **pad)
+        ttk.Entry(parent, width=5, textvariable=self.idraulica_letters, style="Box.TEntry").grid(row=1, column=1, sticky="w", **pad)
 
         ttk.Label(parent, text="EXISTING HYDRAULIC").grid(row=2, column=0, columnspan=2, sticky="w", **pad)
         self.cb_idraulica_esistente = ttk.Combobox(
@@ -335,13 +335,13 @@ class SwolderApp(tk.Tk):
     def _gb5_contents(self, parent: ttk.LabelFrame):
         pad = dict(padx=8, pady=2)
         ttk.Label(parent, text="JOB").grid(row=0, column=0, sticky="w", **pad)
-        ttk.Entry(parent, textvariable=self.commessa, width=18, style="Box.TEntry").grid(row=1, column=0, sticky="we", **pad)
+        ttk.Entry(parent, textvariable=self.commessa, width=20, style="Box.TEntry").grid(row=1, column=0, sticky="we", **pad)
 
-        ttk.Label(parent, text="YEAR/MONTH(YYMM)").grid(row=0, column=1, sticky="w", **pad)
+        ttk.Label(parent, text="YYMM").grid(row=0, column=1, sticky="w", **pad)
         ttk.Entry(
             parent,
             textvariable=self.annomese,
-            width=12,
+            width=5,
             validate="key",
             validatecommand=(self.register(self._validate_yymm), "%P"),
             style="Box.TEntry"
