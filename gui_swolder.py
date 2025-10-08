@@ -17,10 +17,10 @@ FONT_SIZE = 10  # cambia qui per ingrandire/ridurre
 
 # --- DIMENSIONI INDEPENDENTI (px) ---
 GBALL_H = 160
-GB1_W, GB1_H = 200, GBALL_H   # Livello 1
-GB2_W, GB2_H = 200, GBALL_H   # Livello 2
-GB3_W, GB3_H = 190, GBALL_H   # Livello 3
-GB5_W, GB5_H = 280, GBALL_H   # Livello 5
+GB1_W, GB1_H = 195, GBALL_H   # Livello 1
+GB2_W, GB2_H = 195, GBALL_H   # Livello 2
+GB3_W, GB3_H = 195, GBALL_H   # Livello 3
+GB5_W, GB5_H = 255, GBALL_H   # Livello 5
 LIST_W, LIST_H = 350, GBALL_H # Colonna "Commesse esistenti"
 
 # Spaziature/padding
@@ -280,7 +280,7 @@ class SwolderApp(tk.Tk):
         self.geometry(f"{w}x{h}")
 
     def _gb1_contents(self, parent: ttk.LabelFrame):
-        pad = dict(padx=8, pady=2)
+        pad = dict(padx=1, pady=2)
         ttk.Label(parent, text="LAV FOLDER").grid(row=0, column=0, sticky="w", **pad)
         cb = ttk.Combobox(
             parent,
@@ -333,11 +333,11 @@ class SwolderApp(tk.Tk):
         self.cb_idraulica_esistente.grid(row=3, column=0, columnspan=2, sticky="we", **pad)
 
     def _gb5_contents(self, parent: ttk.LabelFrame):
-        pad = dict(padx=8, pady=2)
+        pad = dict(padx=5, pady=2)
         ttk.Label(parent, text="JOB").grid(row=0, column=0, sticky="w", **pad)
         ttk.Entry(parent, textvariable=self.commessa, width=20, style="Box.TEntry").grid(row=1, column=0, sticky="we", **pad)
 
-        ttk.Label(parent, text="YYMM").grid(row=0, column=1, sticky="w", **pad)
+        ttk.Label(parent, text="YYMM").grid(row=0, column=1, **pad)
         ttk.Entry(
             parent,
             textvariable=self.annomese,
@@ -345,7 +345,7 @@ class SwolderApp(tk.Tk):
             validate="key",
             validatecommand=(self.register(self._validate_yymm), "%P"),
             style="Box.TEntry"
-        ).grid(row=1, column=1, sticky="w", **pad)
+        ).grid(row=1, column=1, **pad)
 
         rb_frame = ttk.Frame(parent)
         rb_frame.grid(row=2, column=0, columnspan=2, sticky="w", padx=8, pady=(4,8))
